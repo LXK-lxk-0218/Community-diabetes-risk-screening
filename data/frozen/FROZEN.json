@@ -1,0 +1,96 @@
+{
+  "name": "stage0-v2",
+  "built_by": "第 0 阶段 v2 Notebook 单元 38–47（口径见规格表 8.1）",
+  "source": {
+    "file": "incident.db",
+    "sha256": "412b7c1adb612f9f0c733669fd0bf8394fc6d42cbe20ad18c9f207d577832d3e"
+  },
+  "spec": {
+    "population": "known_diabetes == 0",
+    "window_days": 90,
+    "max_report_lag_days": 30,
+    "fpg_pos": 7.0,
+    "hba1c_pos": 6.5,
+    "train_end": "2024-06-30",
+    "train_last_visit": "2024-03-02",
+    "valid_start": "2024-07-01",
+    "valid_end": "2024-12-31",
+    "data_as_of": "2025-06-30"
+  },
+  "columns": {
+    "numeric": [
+      "age",
+      "height_cm",
+      "weight_kg",
+      "waist_cm",
+      "sbp",
+      "dbp",
+      "exercise_min_week",
+      "sleep_hours"
+    ],
+    "binary": [
+      "veg_fruit_daily",
+      "hypertension_dx",
+      "hyperlipidemia_dx",
+      "gdm_history",
+      "polyuria",
+      "polydipsia",
+      "weight_loss_unexplained"
+    ],
+    "categorical": [
+      "gender",
+      "smoking_status",
+      "drinking_freq",
+      "family_history_dm"
+    ],
+    "label": "label",
+    "meta": [
+      "visit_id",
+      "resident_id",
+      "visit_date",
+      "district",
+      "education",
+      "income_level"
+    ]
+  },
+  "cleaning": {
+    "duplicates_removed": 437,
+    "height_m_to_cm": 610,
+    "weight_jin_to_kg": 520,
+    "sbp_sentinel_to_null": 278,
+    "out_of_range_to_null": {
+      "height_cm": 0,
+      "weight_kg": 0,
+      "sbp": 0,
+      "dbp": 0,
+      "exercise_min_week": 218,
+      "sleep_hours": 0,
+      "waist_cm": 31
+    }
+  },
+  "train": {
+    "file": "train.parquet",
+    "rows": 32632,
+    "positives": 5285,
+    "positive_rate": 0.162,
+    "date_min": "2023-01-01",
+    "date_max": "2024-03-02",
+    "residents": 26565,
+    "content_sha256": "52e41f28ec7da2b00a520b6337ded738e6b5b637a0926dc9afadf67e3c86d57e"
+  },
+  "valid": {
+    "file": "valid.parquet",
+    "rows": 13067,
+    "positives": 1675,
+    "positive_rate": 0.1282,
+    "date_min": "2024-07-01",
+    "date_max": "2024-12-31",
+    "residents": 12806,
+    "content_sha256": "b489f7c685ee85ec72fb1f120fbca00f9db7bdddff769bc39baa87c7e5c51e0d"
+  },
+  "train_valid_resident_overlap": 10633,
+  "env": {
+    "python": "3.13.5",
+    "pandas": "3.1.1"
+  }
+}

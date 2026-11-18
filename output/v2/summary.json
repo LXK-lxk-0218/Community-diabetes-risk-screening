@@ -1,0 +1,23 @@
+{
+  "source_db": "incident.db",
+  "duplicates_removed": 437,
+  "weight_unit_fixed": 520,
+  "train_last_visit_allowed": "2024-03-02",
+  "train": {
+    "rows": 32632,
+    "positives": 5285,
+    "positive_rate": 0.162,
+    "date_min": "2023-01-01",
+    "date_max": "2024-03-02",
+    "residents": 26565
+  },
+  "valid": {
+    "rows": 13067,
+    "positives": 1675,
+    "positive_rate": 0.1282,
+    "date_min": "2024-07-01",
+    "date_max": "2024-12-31",
+    "residents": 12806
+  },
+  "train_valid_resident_overlap": 10633
+}
